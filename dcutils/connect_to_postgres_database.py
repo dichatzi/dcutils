@@ -6,9 +6,6 @@ import sqlalchemy
 import math
 
 
-#########################################################
-## CLASSES ##############################################
-#########################################################
 class ConnectToDatabase:
     def __init__(self, database, username, password, servername, port):
         # Database data
@@ -110,36 +107,3 @@ class DatabaseData:
 
         # Return class object
         return self
-
-
-
-
-def add_numbers(x, y):
-    return x + y
-
-
-
-
-# #########################################################
-# ## CONNECT TO DATABASE ##################################
-# #########################################################
-# # Connect to database
-# db = ConnectToDatabase(database="sales", username="postgres", password="Dipbsia_01", servername="localhost", port=5432)
-# connection = db.connection
-
-
-
-
-# #########################################################
-# ## CONNECT TO DATABASE ##################################
-# #########################################################
-# # Update data to database
-# data = [[1342412, 5, 7, 900, 12, 25],
-#         ["dfjsdowo", 5, 6, 700, 8, 21]]
-
-# df = pd.DataFrame(data=data, columns=["meter_name", "2021_01_01", "2021_01_04", "2021_01_05", "2021_01_07", "2021_01_08"])
-
-# on_fields = ["meter_name"]
-# upd_fields = [field for field in df.columns if field not in on_fields]
-# uploaded_data = DatabaseData(sql_object=db, dataframe=df, database="sales", schema="test_schema", table="measurements", on_fields=on_fields, upd_fields=upd_fields)
-# uploaded_data.upsert_table()
