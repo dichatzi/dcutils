@@ -107,3 +107,7 @@ class DatabaseData:
 
         # Return class object
         return self
+
+
+NAME = "Dimitris"
+SURNAME = "Chatzigiannis"
