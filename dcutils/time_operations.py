@@ -55,3 +55,35 @@ class TimerObj:
 
         # Print time
         print(f"[{self.now.strftime('%Y-%m-%d %H:%M:%S')}] {message} {round(time_delta.seconds/60, 2)} minutes - {round(time_delta.seconds)} seconds")
+
+
+
+# def date_proc(obj:datetime.datetime, year=None, month=None, day=None, hour=None, minute=None, second=None, microsecond=None, tzinfo=None) -> datetime.datetime:
+#     """
+#     Process datetime object.
+
+#     :param obj: The input datetime object.
+#     :param year: Input year.
+#     :param month: Input month.
+#     :param day: Input day.
+#     :param hour: Input hour.
+#     :param minute: Input minute.
+#     :param second: Input second.
+#     :param microsecond: Input microsecond.
+#     :param tzinfo: Input tzinfo.
+#     :return: Output datetime object.
+#     """
+#     # Initialize values
+#     year = year if year is not None else obj.year
+#     month = month if month is not None else obj.month
+#     day = day if day is not None else obj.day
+#     hour = hour if hour is not None else obj.hour
+#     minute = minute if minute is not None else obj.minute
+#     second = second if second is not None else obj.second
+#     microsecond = microsecond if microsecond is not None else obj.microsecond
+#     tzinfo = tzinfo if tzinfo is not None else obj.tzinfo
+
+#     # Create new datetime object
+#     out_obj = obj.replace(year=year, month=month, day=day, hour=hour, minute=minute, second=second, microsecond=microsecond, tzinfo=tzinfo)
+
+#     return out_obj

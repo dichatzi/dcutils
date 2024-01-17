@@ -1,4 +1,5 @@
 import pandas as pd
+import math
 
 """
 FIND INDEX
@@ -56,3 +57,20 @@ def dataframe_index(df:pd.DataFrame, conditions:dict):
 
     # Find row indices where all conditions are met
     return df.index[mask].tolist()
+
+
+def check_nan(value) -> bool:
+    """
+    Check if value is NaN. In general NaN is a float number so first you have to check if the value is float.
+
+    :param value: Input value.
+    :return: Boolean indicating if value is NaN.
+    """
+    # Check if the value is a float
+    if isinstance(value, float):
+
+        # If it is a float, check if it is NaN
+        if math.isnan(value):
+            return True
+        else:
+            return False
