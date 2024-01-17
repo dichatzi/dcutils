@@ -1,3 +1,4 @@
-from dcutils.connect_to_postgres_database import *
+from dcutils.database_connection import *
 from dcutils.time_operations import *
 from dcutils.author_data import *
+from dcutils.data_manipulation import *

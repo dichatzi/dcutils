@@ -1,7 +1,7 @@
 import datetime
 import pytz
 
-__all__ = ["TimezoneConverter"]
+__all__ = ["TimezoneConverter", "TimerObj"]
 
 
 class TimezoneConverter:
@@ -32,3 +32,26 @@ class TimezoneConverter:
     def __call__(self):
         print(f"Date object time: {self.date} [{self.date.tzinfo}] -> {self.transformed_date} [{self.transformed_date.tzinfo}]")
 
+
+class TimerObj:
+    def __init__(self):
+        self.start = datetime.datetime.now()
+        self.previous = datetime.datetime.now()
+
+        print(f"[{self.start.strftime('%Y-%m-%d %H:%M:%S')}] Starting execution")
+
+    def __call__(self, message=""):
+        # Get current time
+        self.now = datetime.datetime.now()
+    
+        # Get total execution
+        total_execution = self.now - self.start
+
+        # Get time delta
+        time_delta = self.now - self.previous
+
+        # Define previous time point
+        self.previous = self.now
+
+        # Print time
+        print(f"[{self.now.strftime('%Y-%m-%d %H:%M:%S')}] {message} {round(time_delta.seconds/60, 2)} minutes - {round(time_delta.seconds)} seconds")
