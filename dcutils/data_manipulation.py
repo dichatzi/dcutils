@@ -74,3 +74,18 @@ def check_nan(value) -> bool:
             return True
         else:
             return False
+            
+ 
+def str_to_bool(input_string:str) -> bool:
+    """
+    Transorm an input string into a boolean
+
+    :param value: Input value.
+    :return: Boolean indicating if value is NaN.
+    """
+    if input_string.lower() in ('true', 't', 'yes', 'y', '1'):
+        return True
+    elif input_string.lower() in ('false', 'f', 'no', 'n', '0'):
+        return False
+    else:
+        raise ValueError(f"Cannot convert {input_string} to a boolean value.")
