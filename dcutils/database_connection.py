@@ -4,7 +4,7 @@ warnings.simplefilter("ignore")
 import urllib
 import sqlalchemy
 import math
-
+import pymongo
 
 
 class DatabaseObject:
@@ -137,7 +137,7 @@ def connect_to_mongo():
     MONGO_CONNECTION_STRING = "mongodb://localhost:27017"
     
     # Connect to client
-    client = MongoClient(MONGO_CONNECTION_STRING)
+    client = pymongo.MongoClient(MONGO_CONNECTION_STRING)
     
     # Connect to database
     energy_management = client["energy_management"]
@@ -157,7 +157,7 @@ def upsert_mongo(items, filters, collection):
         
     # Create operations array
     operations = [
-        UpdateOne(
+        pymongo.UpdateOne(
             {filter: item[filter] for filter in filters},
             {"$set": item},
             upsert=True
