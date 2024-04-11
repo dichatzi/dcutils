@@ -169,3 +169,35 @@ def upsert_mongo(items, filters, collection):
     
     # Return result
     return result
+
+
+class MongoConnector:
+
+    def __init__(self, db_name:str, connection_string:str="mongodb://localhost:27017"):
+        self.connection_string = connection_string
+        self.client = pymongo.MongoClient(self.connection_string)
+        self.database = self.client[db_name]
+
+    def upsert(items, filters, collection):
+
+        # Check if filter fields input is a list
+        if not isinstance(filters, list):
+            filters = [filters]
+            
+        # Create operations array
+        operations = [
+            pymongo.UpdateOne(
+                {filter: item[filter] for filter in filters},
+                {"$set": item},
+                upsert=True
+            )
+            for item in items
+        ]
+        # Perform the bulk_write operation
+        result = collection.bulk_write(operations)
+        
+        # Return result
+        return result
+
+
+
