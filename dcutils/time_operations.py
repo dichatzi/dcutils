@@ -1,9 +1,13 @@
 import datetime
 import pytz
 
-__all__ = ["TimezoneConverter", "TimerObj"]
+__all__ = ["TimezoneConverter", "TimerObj",
+           "convert_to_timezone"]
 
 
+"""
+CLASSES
+"""
 class TimezoneConverter:
     def __init__(self, date_string, date_string_format="", timezone="", isoformat=False):
         self.date_string = date_string
@@ -56,3 +60,21 @@ class TimerObj:
         # Print time
         print(f"[{self.now.strftime('%Y-%m-%d %H:%M:%S')}] {message} {round(time_delta.seconds/60, 2)} minutes - {round(time_delta.seconds)} seconds")
 
+
+
+"""
+FUNCTIONS
+"""
+def convert_to_timezone(datetime_obj:datetime.datetime, tz_ini:str, tz_fin:str) -> datetime.datetime:
+    
+    # Validate and get the timezone objects
+    initial_timezone = pytz.timezone(tz_ini)
+    target_timezone = pytz.timezone(tz_fin)
+
+    # Localize the naive datetime with the initial timezone
+    localized_datetime = initial_timezone.localize(datetime_obj) if datetime_obj.tzinfo is None else datetime_obj
+
+    # Convert the datetime from the initial timezone to the target timezone
+    converted_datetime = localized_datetime.astimezone(target_timezone)
+
+    return converted_datetime
