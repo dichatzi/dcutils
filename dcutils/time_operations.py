@@ -2,7 +2,7 @@ import datetime
 import pytz
 
 __all__ = ["TimezoneConverter", "TimerObj",
-           "convert_to_timezone"]
+           "convert_to_timezone", "convert_timezone"]
 
 
 """
@@ -78,3 +78,17 @@ def convert_to_timezone(datetime_obj:datetime.datetime, tz_ini:str, tz_fin:str) 
     converted_datetime = localized_datetime.astimezone(target_timezone)
 
     return converted_datetime
+
+def convert_timezone(datetime_object:datetime.datetime=None, initial_timezone:str="CET", new_timezone:str="UTC") -> datetime.datetime:
+
+    # Set the timezone to the initial timezone and get the initial date
+    if datetime_object.tzinfo is None:
+        initial_zone = pytz.timezone(initial_timezone)
+        initial_date = initial_zone.localize(datetime_object)
+    else:
+        initial_date = datetime_object
+
+    # Convert the to the new timezone
+    new_date = initial_date.astimezone(pytz.timezone(new_timezone))
+
+    return new_date
