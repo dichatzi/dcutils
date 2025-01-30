@@ -11,3 +11,7 @@ def parse_args(argv:list):
         args_dict[key] = value
 
     return args_dict
+    
+def create_name(name:str,surname:str):
+    
+    return f"{name} {surname}"
