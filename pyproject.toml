@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dcutils"
+version = "0.0.1"
+description = "Utilities developed by Dr. Dimitris I. Chatzigiannis"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Dr. Dimitris I. Chatzigiannis", email = "dimitris.chatzigiannis@gmail.com" },
+]
+dependencies = [
+    "psycopg2-binary",
+    "pandas",
+    "sqlalchemy>=2.0",
+]
